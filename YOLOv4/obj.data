@@ -1,0 +1,7 @@
+classes= 5
+train  = data/2007_train.txt
+valid  = data/2007_val.txt
+#valid = data/coco_val_5k.list
+names = cfg/obj.names
+backup = backup/
+
