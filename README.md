@@ -75,6 +75,32 @@ data/2007_train.txt
 
 data/2007_val.txt
 
+```
+VOCdevkit  
+│
+└───VOC2007
+    │
+    └───Annotations # 所有图片的xml标签数据
+    │   │   CDY_2015.xml
+    │   │   ...
+    │   
+    └───ImageSets   # 数据集的划分
+    │   │
+    │   └───Main # 所有图片的xml标签数据
+    │       │   test.txt  # 测试集图片文件名集合
+    │       │   train.txt # 训练集图片文件名集合
+    │       │   val.txt   # 验证集图片文件名集合
+    │
+    └───JPEGImages  # 所有图片的jpg数据
+    │   │   CDY_2015.jpg
+    │   │   ...
+    │
+    └───labels      # 所有图片的yolo标签
+        │   CDY_2015.txt
+        │   ...
+
+```
+
 VOCdevkit
     - VOC2007
         - Annotations # 所有图片的xml标签数据
