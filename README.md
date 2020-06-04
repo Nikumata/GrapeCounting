@@ -207,8 +207,11 @@ num=9
 ```
 
 训练产生的权重均会在backup目录下
+![backup](./pictures/back.png)
 
 训练结束后也会产生整个训练过程的mAP随IoU变化的信息图
+![chart-box](./pictures/chart_yolov4-obj-1.png)
+
 
 ### 3 如何使用训练好的模型
 
@@ -217,10 +220,18 @@ num=9
 ```
 ./darknet detector test cfg/obj.data cfg/yolov4-obj-1.cfg weights/yolov4/yolov4-obj-1_best.weights
 ```
+原图:
+![backup](./pictures/CFR.jpg)
+
 输入图片路径,预测结果为prediction.jpg
+![backup](./pictures/predictions.jpg)
+
 
 #### 3.2 评分
 检测训练好的模型在IoU阈值为0.3的条件下，mAP，以及各项准确率的多少。
 ```
 ./darknet detector map cfg/obj.data cfg/yolov4-obj-1.cfg weights/yolov4/yolov4-obj-1_best.weights -iou_thresh 0.30 -thresh 0.30
 ```
+
+![backup](./pictures/mAP.png)
+
