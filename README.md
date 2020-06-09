@@ -32,7 +32,7 @@ After you follow the Darknet guideline to deploy YOLO network. you can predict g
 
 
 
-## YOLOv4训练WGISD数据集过程
+## grape cluster detection
 
 ### 1如何用YOLOv4训练VOC数据集
 
@@ -234,4 +234,38 @@ num=9
 ```
 
 ![backup](./pictures/mAP.png)
+
+## grape berry counting
+
+### 1 高斯核密度函数
+matlab运行get_density_map_autogaussian.m
+
+产生原图的高斯核密度图，作为groundtruth
+
+### 2 去除方框以外的背景
+利用YOLOv4对图片中的葡萄串进行方框定位，执行mask.m函数，将背景图中方框以外的部分去除
+```
+path = 'raw_images\'; 
+filename = strcat(path, 'SVB_1962.jpg');
+img = imread(filename) ;
+data_box = importdata('SVB_1962.txt') ;
+mask_img = getMask(img, data_box);
+imshow(mask_img)
+```
+![backup](./pictures/SVB_1962_mask.jpg)
+
+将rgb图片转成hsv三色图形式
+```
+newimg = rgb2hsv(mask_img);
+% imshow(newimg);
+```
+![backup](./pictures/SVB_1962_hsv.jpg)
+
+### 3 对方框以内的像素点进行Hough变换圆圈计数
+```
+[centers, radiis] = segmentImage(newimg, 5, 30, 0.92);
+prefix = strsplit('SVB_1962.jpg', '.');
+label = readxml( prefix{1});
+```
+![backup](./pictures/SVB_1962_segment.jpg)
 
